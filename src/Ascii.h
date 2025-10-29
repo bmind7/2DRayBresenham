@@ -7,15 +7,15 @@ namespace WGPrep
 {
 	inline void OutputGrid(const Grid& grid)
 	{
-		const int gridY = grid.Height();
-		const int gridX = grid.Width();
+		const int gridY = grid.Height;
+		const int gridX = grid.Width;
 
 		for (int y = 0; y < gridY; ++y)
 		{
 			for (int x = 0; x < gridX; ++x) 
 			{
 				char symbol = '?';
-				switch (grid.At(x, y))
+				switch (GridAt(grid, x, y))
 				{
 				case ECellType::Empty: symbol = '.'; break;
 				case ECellType::Wall: symbol = '#'; break;
