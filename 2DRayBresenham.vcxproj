@@ -131,6 +131,7 @@
     <ClInclude Include="src\Ascii.h" />
     <ClInclude Include="src\Raycast.h" />
     <ClInclude Include="src\Grid.h" />
+    <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,42 +4,15 @@
 #include "Grid.h"
 #include "Ascii.h"
 #include "Raycast.h"
+#include "Utils.h"
 
 using WGPrep::Grid;
 using WGPrep::CreateGrid;
-using WGPrep::GridAt;
-using WGPrep::GridAtUnchecked;
-using WGPrep::GridInBounds;
 using WGPrep::OutputGrid;
 using WGPrep::ECellType;
 using WGPrep::FRaycastResults;
 using WGPrep::LineOfSight;
-
-inline void RandomPlacement(Grid& grid, ECellType cType, int quantity)
-{
-	static std::mt19937 gen{ 12345u };
-	const int gridX = grid.Width;
-	const int gridY = grid.Height;
-	std::uniform_int_distribution<int> distX(0, gridX - 1);
-	std::uniform_int_distribution<int> distY(0, gridY - 1);
-
-	int placed = 0;
-	int maxAttempts = std::max(quantity * 10, gridX * gridY);
-	int attempts = 0;
-
-	// TODO: refactor to avoid multiple attempts
-	while (placed < quantity && attempts < maxAttempts)
-	{
-		++attempts;
-		int x = distX(gen);
-		int y = distY(gen);
-
-		if (GridAtUnchecked(grid, x, y) != ECellType::Empty) continue;
-
-		GridAt(grid, x, y) = cType;
-		++placed;
-	}
-}
+using WGPrep::RandomPlacement;
 
 int main()
 {
